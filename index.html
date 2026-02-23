@@ -91,10 +91,7 @@
 
 /* NO button starts below so no overlap */
 #no {
-  position: fixed; /* WAS absolute */
-  left: 50%;
-  top: 75%;
-  transform: translate(-50%, -50%);
+  position: fixed;
   background-color: #cccccc;
   font-size: 1.4rem;
   padding: 18px 32px;
@@ -103,7 +100,7 @@
   min-width: 120px;
   min-height: 60px;
   transition: left 0.25s ease, top 0.25s ease;
-  z-index: 1000; /* stays above everything */
+  z-index: 1000;
 }
 
   /* Extra scaling for larger phones */
@@ -139,6 +136,21 @@
 <script>
   const noButton = document.getElementById("no");
   const yesButton = document.getElementById("yes");
+
+  // Place NO button nicely below YES on load (prevents overlap)
+  function positionNoButtonInitially() {
+    const yesRect = yesButton.getBoundingClientRect();
+
+    const startX = yesRect.left + yesRect.width / 2 - noButton.offsetWidth / 2;
+    const startY = yesRect.bottom + 20; // 20px below the YES button
+
+    noButton.style.left = startX + "px";
+    noButton.style.top = startY + "px";
+  }
+
+  // Run after layout is ready (fixes mobile overlap)
+  window.addEventListener("load", positionNoButtonInitially);
+  window.addEventListener("resize", positionNoButtonInitially);
 
   function moveButton() {
     const yesRect = yesButton.getBoundingClientRect();
