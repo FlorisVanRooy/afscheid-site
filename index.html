@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 💌</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #ffeef3;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  h1 {
+    margin-top: 100px;
+    color: #ff4d88;
+  }
+
+  .buttons {
+    margin-top: 40px;
+  }
+
+  button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  #yes {
+    background-color: #ff4d88;
+    color: white;
+  }
+
+  #no {
+    background-color: #cccccc;
+    position: absolute;
+  }
+</style>
+</head>
+<body>
+
+<h1>Mis je ons al? 🥺</h1>
+
+<div class="buttons">
+  <button id="yes" onclick="alert('Wij missen jou ook!!! 💕')">JA</button>
+  <button id="no">NEE</button>
+</div>
+
+<script>
+  const noButton = document.getElementById("no");
+
+  noButton.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
+  });
+</script>
+
+</body>
+</html>
